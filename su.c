@@ -38,7 +38,7 @@
 #include "su.h"
 #include "utils.h"
 
-#define PLOGE(fmt, ...) __android_log_print(ANDROID_LOG_INFO, "su", fmt, ##__VA_ARGS__)
+
 
 /* Still lazt, will fix this */
 static char socket_path[PATH_MAX];

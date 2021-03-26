@@ -452,6 +452,7 @@ int main(int argc, char *argv[])
     ctx.to.optind = optind;
 
     if (from_init(&ctx.from) < 0) {
+	fprintf(stderr, "from init failed");
         deny(&ctx);
     }
 
@@ -466,6 +467,7 @@ int main(int argc, char *argv[])
     get_property(data, build_type, "ro.build.type", "");
     free(data);
 
+	/*
     data = read_file("/data/property/persist.sys.root_access", &sz);
     if (data != NULL) {
         len = strlen(data);
@@ -474,7 +476,7 @@ int main(int argc, char *argv[])
         else
             memcpy(enabled, data, len + 1);
         free(data);
-    } else
+    } else*/
         memcpy(enabled, "1", 2);
 
     ctx.umask = umask(027);
@@ -482,28 +484,29 @@ int main(int argc, char *argv[])
     // CyanogenMod-specific behavior
     if (strlen(cm_version) > 0) {
         // only allow su on debuggable builds
-        if (strcmp("1", debuggable) != 0) {
+        /*if (strcmp("1", debuggable) != 0) {
             LOGE("Root access is disabled on non-debug builds");
             deny(&ctx);
-        }
+        }*/
 
         // enforce persist.sys.root_access on non-eng builds
+	    /*
         if (strcmp("eng", build_type) != 0 &&
                (atoi(enabled) & 1) != 1 ) {
             LOGE("Root access is disabled by system setting - enable it under settings -> developer options");
             deny(&ctx);
-        }
+        }*/
 
         // disallow su in a shell if appropriate
-        if (ctx.from.uid == AID_SHELL && (atoi(enabled) == 1)) {
+        /*if (ctx.from.uid == AID_SHELL && (atoi(enabled) == 1)) {
             LOGE("Root access is disabled by a system setting - enable it under settings -> developer options");
             deny(&ctx);
-        }
+        }*/
     }
 
-    if (ctx.from.uid == AID_ROOT || ctx.from.uid == AID_SHELL)
+    //if (ctx.from.uid == AID_ROOT || ctx.from.uid == AID_SHELL)
         allow(&ctx);
-
+/*
     if (stat(REQUESTOR_DATA_PATH, &st) < 0) {
         PLOGE("stat");
         deny(&ctx);
@@ -592,6 +595,6 @@ int main(int argc, char *argv[])
         deny(&ctx);
     }
 
-    deny(&ctx);
+    deny(&ctx);*/
     return -1;
 }

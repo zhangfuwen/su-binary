@@ -16,6 +16,7 @@
 */
 
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <sys/wait.h>
@@ -458,6 +459,7 @@ int main(int argc, char *argv[])
 
     // we can't simply use the property service, since we aren't launched from init and
     // can't trust the location of the property workspace. find the properties ourselves.
+    /*
     data = read_file("/default.prop", &sz);
     get_property(data, debuggable, "ro.debuggable", "0");
     free(data);
@@ -466,6 +468,7 @@ int main(int argc, char *argv[])
     get_property(data, cm_version, "ro.cm.version", "");
     get_property(data, build_type, "ro.build.type", "");
     free(data);
+    */
 
 	/*
     data = read_file("/data/property/persist.sys.root_access", &sz);

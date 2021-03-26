@@ -12,7 +12,8 @@ mkdir cmake_build_ndk && cd cmake_build_ndk
 #CMAKE_C_COMPILER="${ANDOIRD_NDK_HOME}/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang" \
 #CMAKE_CXX_COMPILER="${ANDOIRD_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang++" \
 #cmake ..
-cmake -D CMAKE_TOOLCHAIN_FILE=${ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake ..
+ 
+cmake -DANDROID_ABI=arm64-v8a -D CMAKE_TOOLCHAIN_FILE=${ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake ..
 make su
 cd -
 ls cmake_build_ndk/bin

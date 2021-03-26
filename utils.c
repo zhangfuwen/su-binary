@@ -24,7 +24,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <cutils/properties.h>
 
 /* reads a file, making sure it is terminated with \n \0 */
 char* read_file(const char *fn, unsigned *_sz)
@@ -58,6 +57,7 @@ oops:
     return 0;
 }
 
+/*
 int get_property(const char *data, char *found, const char *searchkey, const char *not_found)
 {
     char *key, *value, *eol, *sol, *tmp;
@@ -101,3 +101,4 @@ defval:
     memcpy(found, not_found, len + 1);
     return len;
 }
+*/

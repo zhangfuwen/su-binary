@@ -20,5 +20,7 @@
 /* reads a file, making sure it is terminated with \n \0 */
 char* read_file(const char *fn, unsigned *_sz);
 
+/*
 int get_property(const char *data, char *found, const char *searchkey, const char *not_found);
+*/
 #endif

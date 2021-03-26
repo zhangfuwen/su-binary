@@ -39,6 +39,9 @@
 #include "su.h"
 #include "utils.h"
 
+#define AID_ROOT 0
+#define PROPERTY_VALUE_MAX 254
+
 
 
 /* Still lazt, will fix this */

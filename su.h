@@ -89,9 +89,9 @@ static inline char *get_command(const struct su_request *to)
 }
 
 
-#define LOGE(fmt, ...) __android_log_print(ANDROID_LOG_INFO, "su", fmt, ##__VA_ARGS__)
-#define LOGD(fmt, ...) __android_log_print(ANDROID_LOG_INFO, "su", fmt, ##__VA_ARGS__)
-#define LOGW(fmt, ...) __android_log_print(ANDROID_LOG_INFO, "su", fmt, ##__VA_ARGS__)
+#define LOGE(fmt, ...) __android_log_print(ANDROID_LOG_INFO, "su", "%s:%d "fmt, __FILE__, __LINE__, ##__VA_ARGS__)
+#define LOGD(fmt, ...) __android_log_print(ANDROID_LOG_INFO, "su", "%s:%d "fmt, __FILE__, __LINE__, ##__VA_ARGS__)
+#define LOGW(fmt, ...) __android_log_print(ANDROID_LOG_INFO, "su", "%s:%d "fmt, __FILE__, __LINE__, ##__VA_ARGS__)
 
 #define PLOGE(fmt,args...) LOGE(fmt " failed with %d: %s", ##args, errno, strerror(errno))
 #define PLOGEV(fmt,err,args...) LOGE(fmt " failed with %d: %s", ##args, err, strerror(err))

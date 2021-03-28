@@ -71,7 +71,7 @@ int send_intent(const struct su_context *ctx,
     }
 
     // sane value so "am" works
-    setenv("LD_LIBRARY_PATH", "/vendor/lib:/system/lib", 1);
+    setenv("LD_LIBRARY_PATH", "/vendor/lib64:/system/lib64", 1);
     setegid(getgid());
     seteuid(getuid());
     return system(command);

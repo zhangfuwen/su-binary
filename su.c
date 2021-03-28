@@ -57,13 +57,15 @@ static int from_init(struct su_initiator *from)
     int err;
 
     from->uid = getuid();
+    PLOGE("uid:%d ", (int)from->uid);
     from->pid = getppid();
+    PLOGE("ppid:%d ", (int)from->pid);
 
     /* Get the command line */
     snprintf(path, sizeof(path), "/proc/%u/cmdline", from->pid);
     fd = open(path, O_RDONLY);
     if (fd < 0) {
-        PLOGE("Opening command line");
+        PLOGE("Opening command line %s", path);
         return -1;
     }
     len = read(fd, args, sizeof(args));
@@ -457,7 +459,7 @@ int main(int argc, char *argv[])
 
     if (from_init(&ctx.from) < 0) {
 	fprintf(stderr, "from init failed");
-        deny(&ctx);
+        //deny(&ctx);
     }
 
     // we can't simply use the property service, since we aren't launched from init and
